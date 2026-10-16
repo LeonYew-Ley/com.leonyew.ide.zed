@@ -1,0 +1,13 @@
+{
+  "name": "com.unity.ide.zed",
+  "displayName": "Zed Editor",
+  "description": "Zed editor integration for Unity. Discovers Zed installations, opens files at line/column in the project workspace, and generates .sln/.csproj files (plus an optional Player-free <Project>.zed.sln for csharp-ls).",
+  "version": "1.0.0",
+  "unity": "2019.4",
+  "unityRelease": "25f1",
+  "keywords": ["zed", "ide", "editor", "csharp-ls"],
+  "author": {
+    "name": "di kelis"
+  },
+  "license": "MIT"
+}
