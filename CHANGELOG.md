@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.1.0]
+- Renamed package to `com.leonyew.ide.zed` (the `com.unity.` prefix is reserved by Unity).
+- Fixed EditorPrefs being read off the main thread during installation discovery.
+
 ## [1.0.0] - 2026-10-16
 - Initial Zed port of com.unity.ide.cursor / com.unity.ide.visualstudio.
 - Zed / Zed Preview / Zed Nightly discovery on Windows, macOS, Linux.
