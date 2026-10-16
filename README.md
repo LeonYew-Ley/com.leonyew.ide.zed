@@ -7,10 +7,18 @@
 让 Unity 把 [Zed](https://zed.dev) 作为外部脚本编辑器：自动发现 Zed 安装、双击脚本/控制台日志时在 Zed 中以项目文件夹打开并跳转到行列，并生成 `.sln` / `.csproj` 供 csharp-ls 等语言服务器使用。
 
 ### 安装
-- **从磁盘添加**：Unity 菜单 `Window > Package Manager` → 左上角 `+` → `Add package from disk...` → 选择本目录下的 `package.json`。
-- **Git URL**（如果你把本目录推到了 Git 仓库）：`+` → `Add package from git URL...`，填入 `https://<你的仓库>.git`（子目录可用 `?path=/子目录`）。
-- 或在 `Packages/manifest.json` 中加入 `"com.unity.ide.zed": "file:D:/CodingProj_Brmyx/com.unity.ide.zed"`。
+1. 打开 Unity 菜单 `Window > Package Manager`。
+2. 点左上角 `+`，选择 `Add package from git URL...`。
+3. 填入下面的地址并点 `Add`：
+   ```
+   https://github.com/LeonYew-Ley/com.unity.ide.zed.git#v1.0.0
+   ```
+   也可以直接在 `Packages/manifest.json` 的 `dependencies` 里加入：
+   ```json
+   "com.unity.ide.zed": "https://github.com/LeonYew-Ley/com.unity.ide.zed.git#v1.0.0"
+   ```
 
+**更新**：把地址末尾的 `#v1.0.0` 换成 [Releases / Tags](https://github.com/LeonYew-Ley/com.unity.ide.zed/tags) 中更新的版本号即可。去掉 `#版本号` 会跟随 `main` 分支，但 Unity 会锁定安装时的提交，需要在 Package Manager 里点 `Update` 才会拉取最新代码。
 然后打开 `Edit > Preferences > External Tools`，在 **External Script Editor** 中选择 `Zed` / `Zed Preview`（或 `Browse...` 选择 `Zed.exe`）。
 
 ### 功能
@@ -19,7 +27,7 @@
 - "Generate .csproj files for"：Embedded / Local / Registry / Git / Built-in / Local tarball / Unknown / Player projects，以及 **Regenerate project files** 按钮。
 - **Generate \<Project\>.zed.sln**（默认开启）：每次生成工程文件时额外写出不含 `*.Player` 工程的 `<项目名>.zed.sln`，避免 csharp-ls 因重复工程名（如 `Unity.Timeline` 与 `Unity.Timeline.Player`）加载失败。在 Zed 设置中：
   ```json
-  "lsp": { "csharp-ls": { "settings": { "solutionPathOverride": "D:\\CodingProj_Brmyx\\Snake_Unity\\Snake_Unity.zed.sln" } } }
+  "lsp": { "csharp-ls": { "settings": { "solutionPathOverride": "<你的项目路径>\\<项目名>.zed.sln" } } }
   ```
 - **Write .zed/settings.json**（默认关闭）：仅当项目根目录下不存在 `.zed/settings.json` 时创建一个（含 `solutionPathOverride` 与扫描排除项），不会覆盖已有文件。
 
@@ -32,10 +40,18 @@
 Use [Zed](https://zed.dev) as Unity's external script editor: installation discovery, opening files at line/column inside the project workspace, and `.sln`/`.csproj` generation for csharp-ls and other language servers.
 
 ### Install
-- **From disk**: `Window > Package Manager` → `+` → `Add package from disk...` → pick this folder's `package.json`.
-- **Git URL** (if you push this folder to a repo): `+` → `Add package from git URL...` → `https://<your-repo>.git` (append `?path=/subfolder` if needed).
-- Or add `"com.unity.ide.zed": "file:D:/CodingProj_Brmyx/com.unity.ide.zed"` to `Packages/manifest.json`.
+1. Open `Window > Package Manager` in Unity.
+2. Click `+` in the top-left corner and choose `Add package from git URL...`.
+3. Paste this URL and click `Add`:
+   ```
+   https://github.com/LeonYew-Ley/com.unity.ide.zed.git#v1.0.0
+   ```
+   Or add it to `dependencies` in `Packages/manifest.json`:
+   ```json
+   "com.unity.ide.zed": "https://github.com/LeonYew-Ley/com.unity.ide.zed.git#v1.0.0"
+   ```
 
+**Updating**: replace `#v1.0.0` with a newer version from [Tags](https://github.com/LeonYew-Ley/com.unity.ide.zed/tags). Without a `#version` suffix the package follows `main`, but Unity pins the commit it installed, so click `Update` in Package Manager to fetch the latest.
 Then go to `Edit > Preferences > External Tools` and choose `Zed` / `Zed Preview` as **External Script Editor** (or `Browse...` to `Zed.exe`).
 
 ### Features
