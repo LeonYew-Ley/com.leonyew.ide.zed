@@ -1,5 +1,8 @@
 # Changelog
 
+## [1.1.1]
+- Author name set to LeonYew.
+
 ## [1.1.0]
 - Renamed package to `com.leonyew.ide.zed` (the `com.unity.` prefix is reserved by Unity).
 - Fixed EditorPrefs being read off the main thread during installation discovery.

@@ -11,14 +11,14 @@
 2. 点左上角 `+`，选择 `Add package from git URL...`。
 3. 填入下面的地址并点 `Add`：
    ```
-   https://github.com/LeonYew-Ley/com.leonyew.ide.zed.git#v1.1.0
+   https://github.com/LeonYew-Ley/com.leonyew.ide.zed.git#v1.1.1
    ```
    也可以直接在 `Packages/manifest.json` 的 `dependencies` 里加入：
    ```json
-   "com.leonyew.ide.zed": "https://github.com/LeonYew-Ley/com.leonyew.ide.zed.git#v1.1.0"
+   "com.leonyew.ide.zed": "https://github.com/LeonYew-Ley/com.leonyew.ide.zed.git#v1.1.1"
    ```
 
-**更新**：把地址末尾的 `#v1.1.0` 换成 [Releases / Tags](https://github.com/LeonYew-Ley/com.leonyew.ide.zed/tags) 中更新的版本号即可。去掉 `#版本号` 会跟随 `main` 分支，但 Unity 会锁定安装时的提交，需要在 Package Manager 里点 `Update` 才会拉取最新代码。
+**更新**：把地址末尾的 `#v1.1.1` 换成 [Releases / Tags](https://github.com/LeonYew-Ley/com.leonyew.ide.zed/tags) 中更新的版本号即可。去掉 `#版本号` 会跟随 `main` 分支，但 Unity 会锁定安装时的提交，需要在 Package Manager 里点 `Update` 才会拉取最新代码。
 然后打开 `Edit > Preferences > External Tools`，在 **External Script Editor** 中选择 `Zed` / `Zed Preview`（或 `Browse...` 选择 `Zed.exe`）。
 
 ### 功能
@@ -44,14 +44,14 @@ Use [Zed](https://zed.dev) as Unity's external script editor: installation disco
 2. Click `+` in the top-left corner and choose `Add package from git URL...`.
 3. Paste this URL and click `Add`:
    ```
-   https://github.com/LeonYew-Ley/com.leonyew.ide.zed.git#v1.1.0
+   https://github.com/LeonYew-Ley/com.leonyew.ide.zed.git#v1.1.1
    ```
    Or add it to `dependencies` in `Packages/manifest.json`:
    ```json
-   "com.leonyew.ide.zed": "https://github.com/LeonYew-Ley/com.leonyew.ide.zed.git#v1.1.0"
+   "com.leonyew.ide.zed": "https://github.com/LeonYew-Ley/com.leonyew.ide.zed.git#v1.1.1"
    ```
 
-**Updating**: replace `#v1.1.0` with a newer version from [Tags](https://github.com/LeonYew-Ley/com.leonyew.ide.zed/tags). Without a `#version` suffix the package follows `main`, but Unity pins the commit it installed, so click `Update` in Package Manager to fetch the latest.
+**Updating**: replace `#v1.1.1` with a newer version from [Tags](https://github.com/LeonYew-Ley/com.leonyew.ide.zed/tags). Without a `#version` suffix the package follows `main`, but Unity pins the commit it installed, so click `Update` in Package Manager to fetch the latest.
 Then go to `Edit > Preferences > External Tools` and choose `Zed` / `Zed Preview` as **External Script Editor** (or `Browse...` to `Zed.exe`).
 
 ### Features
