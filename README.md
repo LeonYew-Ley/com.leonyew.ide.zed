@@ -17,20 +17,19 @@ To update, click **Update** on the package in Package Manager.
 
 更新：在 Package Manager 中选中本包并点击 **Update**。
 
-## Recommended Zed setup / 推荐的 Zed 配置
-Use [csharp-ls](https://github.com/razzmatazz/csharp-language-server) and point it at the generated solution in Zed's `settings.json`:
+## Zed setup / Zed 配置
+Install the [C# extension](https://zed.dev/extensions/csharp) in Zed and use csharp-ls. The package writes `.zed/settings.json` in your Unity project so csharp-ls loads the generated `.sln` automatically.
 
-在 Zed 的 `settings.json` 中使用 csharp-ls 并指定生成的解决方案：
+在 Zed 中安装 C# 扩展并使用 csharp-ls。本包会在 Unity 项目里写入 `.zed/settings.json`，让 csharp-ls 自动加载生成的 `.sln`，无需手动配置。
 
 ```json
-"languages": { "CSharp": { "language_servers": ["csharp-ls", "!roslyn", "!omnisharp"] } },
-"lsp": { "csharp-ls": { "settings": { "solutionPathOverride": "<ProjectPath>/<ProjectName>.zed.sln" } } }
+"languages": { "CSharp": { "language_servers": ["csharp-ls", "!roslyn", "!omnisharp"] } }
 ```
 
 ## Features / 功能
 - Finds Zed, Zed Preview and Zed Nightly on Windows, macOS and Linux.
 - Opens scripts and console log entries in Zed at the right line and column.
-- Generates `.sln` / `.csproj` files, plus a `<ProjectName>.zed.sln` without Player projects for csharp-ls.
+- Generates `.sln` / `.csproj` files and points csharp-ls at the solution via `.zed/settings.json`.
 - No debugger integration.
 
 ## License

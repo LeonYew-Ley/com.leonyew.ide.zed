@@ -143,16 +143,9 @@ namespace Zed.Unity.Editor
 			EditorGUILayout.LabelField("Zed:");
 			EditorGUI.indentLevel++;
 
-			var zedSln = ZedSettings.GenerateZedSolution;
-			var newZedSln = EditorGUILayout.Toggle(new GUIContent("Generate <Project>.zed.sln",
-				"Also write <ProjectName>.zed.sln without the *.Player projects whenever project files are regenerated. " +
-				"Point csharp-ls at it with lsp.csharp-ls.settings.solutionPathOverride to avoid duplicate project name errors."), zedSln);
-			if (newZedSln != zedSln)
-				ZedSettings.GenerateZedSolution = newZedSln;
-
 			var writeSettings = ZedSettings.WriteZedProjectSettings;
 			var newWriteSettings = EditorGUILayout.Toggle(new GUIContent("Write .zed/settings.json",
-				"Create .zed/settings.json in the project root (only if it does not exist yet) with csharp-ls solutionPathOverride and file scan exclusions."), writeSettings);
+				"Create .zed/settings.json in the project root so csharp-ls loads the generated solution. If the file already exists, only the solutionPathOverride value is updated."), writeSettings);
 			if (newWriteSettings != writeSettings)
 				ZedSettings.WriteZedProjectSettings = newWriteSettings;
 

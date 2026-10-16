@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.2.0]
+- Removed the separate `<Project>.zed.sln`; SDK-style projects never include Player projects, so the regular `.sln` works.
+- `.zed/settings.json` is now written by default and keeps `solutionPathOverride` pointing at the generated `.sln`.
+
 ## [1.1.1]
 - Author name set to LeonYew.
 

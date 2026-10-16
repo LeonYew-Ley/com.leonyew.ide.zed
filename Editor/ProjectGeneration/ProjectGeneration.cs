@@ -1,4 +1,4 @@
-﻿/*---------------------------------------------------------------------------------------------
+/*---------------------------------------------------------------------------------------------
  *  Copyright (c) Unity Technologies.
  *  Copyright (c) Microsoft Corporation. All rights reserved.
  *  Licensed under the MIT License. See License.txt in the project root for license information.
@@ -882,37 +882,6 @@ namespace Zed.Unity.Editor
 			var solutionFile = SolutionFile();
 			var previousSolution = m_FileIOProvider.Exists(solutionFile) ? SolutionParser.ParseSolutionFile(solutionFile, m_FileIOProvider) : null;
 			SyncSolutionFileIfNotChanged(solutionFile, SolutionText(assemblies, previousSolution));
-
-			SyncZedSolution(assemblies);
-		}
-
-		/// <summary>
-		/// Zed addition: writes &lt;ProjectName&gt;.zed.sln that excludes '*.Player' projects, so csharp-ls
-		/// does not choke on duplicate project names (e.g. Unity.Timeline vs Unity.Timeline.Player).
-		/// </summary>
-		private void SyncZedSolution(IEnumerable<Assembly> assemblies)
-		{
-			if (!ZedSettings.GenerateZedSolution)
-				return;
-
-			try
-			{
-				var zedSolutionFile = ZedSolutionFile();
-				var nonPlayerAssemblies = assemblies
-					.Where(a => a.outputPath != global::Zed.Unity.Editor.AssemblyNameProvider.PlayerAssemblyOutput)
-					.ToList();
-				var previous = m_FileIOProvider.Exists(zedSolutionFile) ? SolutionParser.ParseSolutionFile(zedSolutionFile, m_FileIOProvider) : null;
-				SyncFileIfNotChanged(zedSolutionFile, SolutionText(nonPlayerAssemblies, previous));
-			}
-			catch (Exception ex)
-			{
-				Debug.LogWarning($"[Zed] Failed to write .zed.sln: {ex.Message}");
-			}
-		}
-
-		public string ZedSolutionFile()
-		{
-			return Path.Combine(ProjectDirectory.NormalizePathSeparators(), $"{InvalidCharactersRegexPattern.Replace(m_ProjectName, "_")}.zed.sln");
 		}
 
 		private string SolutionText(IEnumerable<Assembly> assemblies, Solution previousSolution = null)
